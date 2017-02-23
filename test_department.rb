@@ -31,9 +31,14 @@ class DepartmentTest < Minitest::Test
     software_development.add_employee(robby)
     software_development.add_employee(jeff)
     robby.update_satisfaction("Satisfactory")
-    #binding.pry
     software_development.give_raises_to_all_good_workers(10000)
     assert_equal 65000, software_development.employees[0].salary
+  end
+
+  def test_total_department_payroll
+    software_development.add_employee(robby)
+    software_development.add_employee(jeff)
+    assert_equal 120000, software_development.total_department_payroll
   end
 
 end

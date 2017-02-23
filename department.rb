@@ -21,4 +21,10 @@ attr_accessor :employees
     end
   end
 
+  def total_department_payroll
+    total = 0
+    self.employees.each {|em| total += em.salary}
+    total
+  end
+
 end
