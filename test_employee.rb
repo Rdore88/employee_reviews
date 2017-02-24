@@ -19,6 +19,7 @@ attr_accessor :new_employee
 
   def test_new_employee
   assert_equal 60000, new_employee.salary
+  assert_equal "Robby Dore", new_employee.name
   end
 
   def test_change_salary
@@ -26,8 +27,14 @@ attr_accessor :new_employee
     assert_equal 65000, new_employee.salary
   end
 
-  def test_satisfaction
+  def test_update_satisfaction
+    new_employee.update_satisfaction("Satisfactory")
+    assert_equal "Satisfactory", new_employee.satisfactory
+  end
 
+  def test_add_review
+    assert_kind_of Array, new_employee.reviews
+    assert_equal 1, new_employee.add_review("Robby is a great worker.").length
   end
 
 end
