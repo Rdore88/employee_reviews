@@ -1,10 +1,11 @@
 require_relative 'employee'
 
 class Department
-attr_accessor :employees
+attr_accessor :employees, :name
 
-  def initialize
+  def initialize(name)
     @employees = []
+    @name = name
   end
 
   def add_employee(new_employee)

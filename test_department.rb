@@ -10,15 +10,19 @@ class DepartmentTest < Minitest::Test
   end
 
   def jeff
-    @_jeff ||= Employee.new("Jeff Spies", "JSpies@gmail.com", "845-987-1324", 60000, "Satisfactory")
+    @_jeff ||= Employee.new("Jeff Spies", "JSpies@gmail.com", "845-987-1324", 60000, "Unsatisfactory")
   end
 
   def software_development
-    @software_development ||= Department.new
+    @_software_development ||= Department.new("Software Development")
   end
 
   def test_department_exists
     assert Department
+  end
+
+  def test_department_name
+    assert_equal "Software Development", software_development.name
   end
 
   def test_add_employee
@@ -32,7 +36,7 @@ class DepartmentTest < Minitest::Test
     software_development.add_employee(jeff)
     robby.update_satisfaction("Satisfactory")
     software_development.give_raises_to_all_good_workers(10000)
-    assert_equal 65000, software_development.employees[0].salary
+    assert_equal 70000, software_development.employees[0].salary
   end
 
   def test_total_department_payroll
