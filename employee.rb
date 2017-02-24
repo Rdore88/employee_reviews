@@ -1,6 +1,6 @@
 
 class Employee
-attr_accessor :name, :email_address, :phone_number, :salary, :satisfactory, :reviews
+attr_accessor :name, :email_address, :phone_number, :salary, :satisfactory, :reviews  # => nil
 
   def initialize(name, email_address, phone_number, salary, satisfactory = "Satisfactory")
     @name = name
@@ -9,18 +9,25 @@ attr_accessor :name, :email_address, :phone_number, :salary, :satisfactory, :rev
     @salary = salary
     @satisfactory = satisfactory
     @reviews = []
-  end
+  end                                                                                       # => :initialize
 
   def change_salary(promotion)
     self.salary += promotion
-  end
+  end                           # => :change_salary
 
-  def update_satisfaction(rating)
-    self.satisfactory = rating
-  end
+  def update_satisfaction(reviews)
+    satisfaction = self.reviews.each do |rev|
+      /great|well|satisfactory|huge asset|impressed/.match(rev)
+    end
+    if satisfaction
+      self.satisfactory = "Satisfactory"
+    else
+      self.satisfactory = "Unsatisfactory"
+    end
+  end                                                            # => :update_satisfaction
 
   def add_review(words)
     self.reviews.push(words)
-  end
+  end                         # => :add_review
 
-end
+end  # => :add_review

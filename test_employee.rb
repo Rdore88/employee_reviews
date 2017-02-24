@@ -7,7 +7,7 @@ class EmployeeTest < Minitest::Test
 attr_accessor :new_employee
   def new_employee
     unless @new_employee
-      @new_employee = Employee.new("Robby Dore", "Rdore88@gmail.com", "404-277-3952", 60000)
+      @new_employee = Employee.new("Robby Dore", "Rdore88@gmail.com", "404-277-3952", 60000, "Unsatisfactory")
     else
       @new_employee
     end
@@ -28,7 +28,8 @@ attr_accessor :new_employee
   end
 
   def test_update_satisfaction
-    new_employee.update_satisfaction("Satisfactory")
+    new_employee.add_review("Robby is a great worker.")
+    new_employee.update_satisfaction(new_employee.update_satisfaction(new_employee.reviews))
     assert_equal "Satisfactory", new_employee.satisfactory
   end
 
